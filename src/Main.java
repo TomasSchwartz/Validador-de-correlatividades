@@ -5,11 +5,19 @@ import java.util.ArrayList;
 class Materia {
     String nombre_materia;
     List<Materia> correlativas = new ArrayList<Materia>();
+
+    void Agregar_Correlativa(Materia correlativa){
+        this.correlativas.add(correlativa);
+    }
 }
 
 class Alumno {
     String nombre_alumno;
     List<Materia> materias_cursadas = new ArrayList<Materia>();
+
+    void Cursar_materia(Materia materia){
+        this.materias_cursadas.add(materia);
+    }
 }
 
 class Inscripcion {
@@ -35,6 +43,14 @@ class Inscripcion {
         }
         return true; // El alumno aprobó todas las correlativas necesarias.
     }
+
+    void Asignar_Alumno(Alumno alumno){
+        this.alumno = alumno;
+    }
+
+    void Asignar_materia(Materia materia){
+        this.inscripcion_alumno.add(materia);
+    }
 }
 
 
@@ -51,62 +67,62 @@ public class Main {
 
         //Materias segundo nivel
         Materia paradigmas_de_programacion = new Materia();
-        paradigmas_de_programacion.correlativas.add(matematica_discreta);
+        paradigmas_de_programacion.Agregar_Correlativa(matematica_discreta);
 
         Materia fisica_uno = new Materia();
 
         Materia analisis_matematico_dos = new Materia();
-        analisis_matematico_dos.correlativas.add(algebra);
-        analisis_matematico_dos.correlativas.add(analisis_matematico_uno);
+        analisis_matematico_dos.Agregar_Correlativa(algebra);
+        analisis_matematico_dos.Agregar_Correlativa(analisis_matematico_uno);
 
         Materia analisis_de_sistemas = new Materia();
-        analisis_de_sistemas.correlativas.add(sistemas_y_organizaciones);
-        analisis_de_sistemas.correlativas.add(algoritmos);
+        analisis_de_sistemas.Agregar_Correlativa(sistemas_y_organizaciones);
+        analisis_de_sistemas.Agregar_Correlativa(algoritmos);
 
         //Materias tercer nivel
         Materia fisica_dos = new Materia();
-        fisica_dos.correlativas.add(fisica_uno);
-        fisica_dos.correlativas.add(analisis_matematico_dos);
+        fisica_dos.Agregar_Correlativa(fisica_uno);
+        fisica_dos.Agregar_Correlativa(analisis_matematico_dos);
 
         Materia disenio_de_sistemas = new Materia();
-        disenio_de_sistemas.correlativas.add(analisis_de_sistemas);
-        disenio_de_sistemas.correlativas.add(paradigmas_de_programacion);
-        disenio_de_sistemas.correlativas.add(matematica_discreta);
-        disenio_de_sistemas.correlativas.add(algoritmos);
-        disenio_de_sistemas.correlativas.add(sistemas_y_organizaciones);
+        disenio_de_sistemas.Agregar_Correlativa(analisis_de_sistemas);
+        disenio_de_sistemas.Agregar_Correlativa(paradigmas_de_programacion);
+        disenio_de_sistemas.Agregar_Correlativa(matematica_discreta);
+        disenio_de_sistemas.Agregar_Correlativa(algoritmos);
+        disenio_de_sistemas.Agregar_Correlativa(sistemas_y_organizaciones);
 
         Materia matematica_superior = new Materia();
-        matematica_superior.correlativas.add(analisis_matematico_dos);
-        matematica_superior.correlativas.add(algebra);
-        matematica_superior.correlativas.add(analisis_matematico_uno);
+        matematica_superior.Agregar_Correlativa(analisis_matematico_dos);
+        matematica_superior.Agregar_Correlativa(algebra);
+        matematica_superior.Agregar_Correlativa(analisis_matematico_uno);
 
 
         Materia economia = new Materia();
-        economia.correlativas.add(analisis_de_sistemas);
-        economia.correlativas.add(algoritmos);
-        economia.correlativas.add(sistemas_y_organizaciones);
+        economia.Agregar_Correlativa(analisis_de_sistemas);
+        economia.Agregar_Correlativa(algoritmos);
+        economia.Agregar_Correlativa(sistemas_y_organizaciones);
 
         Materia metodologia = new Materia();
-        metodologia.correlativas.add(analisis_de_sistemas);
-        metodologia.correlativas.add(paradigmas_de_programacion);
+        metodologia.Agregar_Correlativa(analisis_de_sistemas);
+        metodologia.Agregar_Correlativa(paradigmas_de_programacion);
 
 
   //Alumno
         Alumno tomas = new Alumno();
-        tomas.materias_cursadas.add(matematica_discreta);
-        tomas.materias_cursadas.add(algebra);
-        tomas.materias_cursadas.add(analisis_matematico_uno);
-        tomas.materias_cursadas.add(sistemas_y_organizaciones);
-        tomas.materias_cursadas.add(algoritmos);
-        tomas.materias_cursadas.add(paradigmas_de_programacion);
-        tomas.materias_cursadas.add(fisica_uno);
-        tomas.materias_cursadas.add(analisis_matematico_dos);
-        tomas.materias_cursadas.add(analisis_de_sistemas);
+        tomas.Cursar_materia(matematica_discreta);
+        tomas.Cursar_materia(algebra);
+        tomas.Cursar_materia(analisis_matematico_uno);
+        tomas.Cursar_materia(sistemas_y_organizaciones);
+        tomas.Cursar_materia(algoritmos);
+        tomas.Cursar_materia(paradigmas_de_programacion);
+        tomas.Cursar_materia(fisica_uno);
+        tomas.Cursar_materia(analisis_matematico_dos);
+        tomas.Cursar_materia(analisis_de_sistemas);
 
         Alumno franco = new Alumno();
-        franco.materias_cursadas.add(matematica_discreta);
-        franco.materias_cursadas.add(algebra);
-        franco.materias_cursadas.add(analisis_matematico_uno);
+        franco.Cursar_materia(matematica_discreta);
+        franco.Cursar_materia(algebra);
+        franco.Cursar_materia(analisis_matematico_uno);
 
         Alumno facundo = new Alumno();
 
@@ -115,25 +131,25 @@ public class Main {
 
    //Inscprcion
         Inscripcion inscripcion_tomas = new Inscripcion();
-        inscripcion_tomas.alumno = tomas;
-        inscripcion_tomas.inscripcion_alumno.add(fisica_dos);
-        inscripcion_tomas.inscripcion_alumno.add(disenio_de_sistemas);
-        inscripcion_tomas.inscripcion_alumno.add(matematica_superior);
-        inscripcion_tomas.inscripcion_alumno.add(economia);
-        inscripcion_tomas.inscripcion_alumno.add(metodologia);
+        inscripcion_tomas.Asignar_Alumno(tomas);
+        inscripcion_tomas.Asignar_materia(fisica_dos);
+        inscripcion_tomas.Asignar_materia(disenio_de_sistemas);
+        inscripcion_tomas.Asignar_materia(matematica_superior);
+        inscripcion_tomas.Asignar_materia(economia);
+        inscripcion_tomas.Asignar_materia(metodologia);
 
         Inscripcion inscripcion_franco = new Inscripcion();
-        inscripcion_franco.alumno = franco;
-        inscripcion_franco.inscripcion_alumno.add(fisica_dos);
-        inscripcion_franco.inscripcion_alumno.add(disenio_de_sistemas);
-        inscripcion_franco.inscripcion_alumno.add(matematica_superior);
-        inscripcion_franco.inscripcion_alumno.add(economia);
-        inscripcion_franco.inscripcion_alumno.add(metodologia);
+        inscripcion_franco.Asignar_Alumno(franco);
+        inscripcion_franco.Asignar_materia(fisica_dos);
+        inscripcion_franco.Asignar_materia(disenio_de_sistemas);
+        inscripcion_franco.Asignar_materia(matematica_superior);
+        inscripcion_franco.Asignar_materia(economia);
+        inscripcion_franco.Asignar_materia(metodologia);
 
         Inscripcion inscripcion_facundo = new Inscripcion();
-        inscripcion_facundo.alumno = facundo;
-        inscripcion_facundo.inscripcion_alumno.add(matematica_discreta);
-        inscripcion_facundo.inscripcion_alumno.add(algebra);
+        inscripcion_facundo.Asignar_Alumno(facundo);
+        inscripcion_facundo.Asignar_materia(matematica_discreta);
+        inscripcion_facundo.Asignar_materia(algebra);
 
 
 
